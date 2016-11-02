@@ -10,8 +10,8 @@ correction_comment = 'I think you meant to write "' + correct_spelling + '"'
 
 # Subreddit settings
 subreddit_to_grab = "test"
-reddit_user = "bevo1"
-#reddit_passwd = "4ZV7jx5j"
+#reddit_user = ""
+#reddit_passwd = ""
 
 # Program settings
 checkedCommentsCache = []
