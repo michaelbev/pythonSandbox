@@ -6,7 +6,7 @@ _author_ = 'bevo'
 # Spellcheck settings
 words_to_match = ['collorado', 'collaredo']
 correct_spelling = "Colorado"
-correction_comment = 'I think you meant to write "' + correct_spelling + '"'
+correction_comment = f'I think you meant to write "{correct_spelling}"'
 
 # Subreddit settings
 subreddit_to_grab = "test"
@@ -31,7 +31,7 @@ def run_bot():
     correctionsPosted = 0
     commentsChecked = 0
     commentsAlreadyChecked = 0
-    print("Grabbing subreddit '" + subreddit_to_grab + "'...")
+    print(f"Grabbing subreddit '{subreddit_to_grab}'...")
     subreddit = r.get_subreddit(subreddit_to_grab)
     print ("Grabbing comments...")
     comments = subreddit.get_comments(limit=25)
@@ -41,16 +41,16 @@ def run_bot():
             comment_text = comment.body.lower()
             isMatch = any(string in comment_text for string in words_to_match)
             if isMatch:
-                print("Match found! Comment ID: " + comment.id)
+                print(f'Match found! Comment ID: {comment.id}')
                 comment.refresh()
                 doPostCorrection = True
                 print("  Comment not checked.")
-                print("    Is_Root    : " + str(comment.is_root))
-                print("    Replies#   : " + str(len(comment.replies)))
+                print(f'    Is_Root    : {str(comment.is_root)}')
+                print(f'    Replies#   : {str(len(comment.replies))}')
                 for reply in comment.replies:
                     print("      Checking reply for correction")
                     if reply.body == correction_comment:
-                        print("        Comment already corrected in reply : " + reply.id)
+                        print(f'        Comment already corrected in reply : {reply.id}')
                         doPostCorrection = False
                         break
                 if doPostCorrection:
@@ -62,9 +62,9 @@ def run_bot():
         else:
             commentsAlreadyChecked += 1
     print ("Comments loop finished:")
-    print ("   Comments already checked   : " + str(commentsAlreadyChecked))
-    print ("   Comments newly checked     : " + str(commentsChecked))
-    print ("   Corrections posted         : " + str(correctionsPosted))
+    print (f'   Comments already checked   : {str(commentsAlreadyChecked)}')
+    print (f'   Comments newly checked     : {str(commentsChecked)}')
+    print (f'   Corrections posted         : {str(correctionsPosted)}')
     print ("  time to sleep")
     print
 
