@@ -1,6 +1,6 @@
 def printBreak(title):
     """Prints a dotted line"""
-    print("------" + title + "------")
+    print(f'------{title}------')
 
 
 def printWords(theWords):
@@ -24,7 +24,7 @@ def sortWordsByReverseAlphabet(theWords):
     for word in theWords:
         for i in range(len(wordsSortedByReverseAlphabet)):
             for letter in range(len(word)):
-                print(word[letter] + " : " + wordsSortedByReverseAlphabet[i][0])
+                print(f'{word[letter]} : {wordsSortedByReverseAlphabet[i][0]}')
                 if word[letter] > wordsSortedByReverseAlphabet[i][0]:
                      wordsSortedByReverseAlphabet.insert(i, word)
                      break
